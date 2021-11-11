@@ -23,7 +23,7 @@ def kategory (request, id):
     kategory_user = Kategories.objects.get(pk=id)
     return HttpResponse(kategory_user)
 
-# def kategory (request, id):
+# def kategories (request, id):
 #     kategory_user = Kategories.objects.get(pk=id)
 #     kategory_recipe = Recipes.objects.filter(kategory = kategory_user)
 #     kategories = Kategories.objects.all()
@@ -42,3 +42,4 @@ def kategories (request):
 def recipe(request, id):
     recipe_user = Recipes.objects.get(pk=id)
     return HttpResponse(recipe_user)
+
