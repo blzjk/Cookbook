@@ -1,0 +1,28 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>-->
+<!--        Strona z przepisami-->
+<!--    </title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<span class="content">-->
+<!--    {% for recipe in recipes %}-->
+<!--    <span class="recipeContainer">-->
+<!--        <span class="recipeHeader">-->
+<!--            {{recipe.title}}-->
+<!--        </span>-->
+<!--        <span class="recipeDetails">-->
+<!--            <p><a href="kategoria/{{kat.id}}" {{recipe.kategory}}></a></p>-->
+<!--        </span>-->
+<!--        <span class="recipeContent">-->
+<!--            {{ recipe.content|safe }}-->
+<!--        </span>-->
+<!--    </span>-->
+<!--    {% endfor %}-->
+<!--</span>-->
+<!--</body>-->
+<!--</html>-->
+{% for recipe in recipes %}
+<p><a href= "przepis/{{ recipe.id }}"> {{recipe.title}}</a></p>
+{% endfor %}
