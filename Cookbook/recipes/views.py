@@ -42,5 +42,14 @@ def kategories(request):
 
 
 def recipe(request, id):
-    recipe_user = Recipes.objects.get(pk=id)
-    return HttpResponse(recipe_user)
+    try:
+        recipe_user = Recipes.objects.get(pk=id)
+        return render(request, 'recipe.html', {
+            'recipe': recipe_user
+        })
+    except Recipes.DoesNotExist:
+        return render(request, '404.html')
+
+
+
+
