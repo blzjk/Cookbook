@@ -19,9 +19,11 @@ def index(request):
     # })
 
 
-def kategory (request, id):
+def kategory(request, id):
     kategory_user = Kategories.objects.get(pk=id)
-    return HttpResponse(kategory_user)
+    kat_recipe = Recipes.objects.filter(kategory=kategory_user)
+    return HttpResponse(kat_recipe)
+
 
 # def kategories (request, id):
 #     kategory_user = Kategories.objects.get(pk=id)
@@ -33,7 +35,7 @@ def kategory (request, id):
 #     return render(request, 'kategorie.html', dane)
 
 
-def kategories (request):
+def kategories(request):
     kategories = Kategories.objects.all()
     dane = {'kategories': kategories}
     return render(request, 'kategorie.html', dane)
@@ -42,4 +44,3 @@ def kategories (request):
 def recipe(request, id):
     recipe_user = Recipes.objects.get(pk=id)
     return HttpResponse(recipe_user)
-

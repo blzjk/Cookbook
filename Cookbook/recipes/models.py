@@ -42,7 +42,7 @@ class Recipes(models.Model):
     kategory = models.ForeignKey(Kategories, on_delete=models.CASCADE, null=True)
     content = models.TextField(max_length=255)
     date = models.DateTimeField(default=datetime.datetime.now(), blank=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=False)
+    # author = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=False)
     photo = models.ImageField(blank=True, upload_to='media')
     source = models.URLField(blank=True)
 

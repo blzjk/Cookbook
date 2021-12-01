@@ -49,7 +49,8 @@ def user_login(request):
             # sprawdzanie czy użytkownik został znaleziony
             if user is not None:
                 login(request, user)
-            return redirect("/uzytkownik/panel")
+                return redirect("/uzytkownik/panel")
+
     form = AuthenticationForm()
 
     return render(
