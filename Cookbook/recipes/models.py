@@ -2,7 +2,7 @@ import datetime
 from django.db import models
 
 
-class Kategories(models.Model):
+class Categories(models.Model):
     def __str__(self):
         return self.name
 
@@ -10,8 +10,8 @@ class Kategories(models.Model):
     name = models.CharField(max_length=20)
 
     class Meta:
-        verbose_name = "Kategory"
-        verbose_name_plural = "Kategories"
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
 
 
 class User(models.Model):
@@ -39,7 +39,7 @@ class Recipes(models.Model):
     title = models.CharField(max_length=255)
     description = models.CharField(null=True, max_length=255)
     ingredients = models.ManyToManyField(Ingredients)
-    kategory = models.ForeignKey(Kategories, on_delete=models.CASCADE, null=True)
+    category = models.ForeignKey(Categories, on_delete=models.CASCADE, null=True)
     content = models.TextField(max_length=255)
     date = models.DateTimeField(default=datetime.datetime.now(), blank=True)
     # author = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=False)

@@ -23,8 +23,8 @@ from recipes.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
-    path('kategorie/', kategories, name='kategorie'),
-    path('kategorie/kategoria/<id>/', kategory, name='kategoria'),
+    path('kategorie/', categories, name='kategorie'),
+    path('kategorie/kategoria/<id>/', category, name='kategoria'),
     path('przepis/<id>/', recipe, name='przepis'),
     path('uzytkownik/', include('users.urls'))
 ]

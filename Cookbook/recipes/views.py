@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Recipes, Kategories
+from .models import Recipes, Categories
 
 
 def index(request):
     # wszystkie = Recipes.objects.all()
     # jeden = Recipes.objects.get(pk=1)
-    # kat_name = Kategories.objects.get(id=1)
-    # null = Recipes.objects.filter(kategory__isnull=True)
+    # cat_name = Categories.objects.get(id=1)
+    # null = Recipes.objects.filter(category__isnull=True)
     # zawiera = Recipes.objects.filter(content__icontains='boczek')
     # return HttpResponse(zawiera)
     recipes = Recipes.objects.all()
@@ -19,10 +19,10 @@ def index(request):
     # })
 
 
-def kategory(request, id):
-    kategory_user = Kategories.objects.get(pk=id)
-    kat_recipe = Recipes.objects.filter(kategory=kategory_user)
-    return HttpResponse(kat_recipe)
+def category(request, id):
+    category_user = Categories.objects.get(pk=id)
+    cat_recipe = Recipes.objects.filter(category=category_user)
+    return HttpResponse(cat_recipe)
 
 
 # def kategories (request, id):
@@ -35,9 +35,9 @@ def kategory(request, id):
 #     return render(request, 'kategorie.html', dane)
 
 
-def kategories(request):
-    kategories = Kategories.objects.all()
-    dane = {'kategories': kategories}
+def categories(request):
+    categories = Categories.objects.all()
+    dane = {'categories': categories}
     return render(request, 'kategorie.html', dane)
 
 
