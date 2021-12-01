@@ -1,20 +1,22 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.forms import AuthenticationForm
 from .form import MySignupForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 @csrf_exempt
 def register(request):
     if request.method == 'POST':
         form = MySignupForm(request.POST)
-        print('NIE POSZŁO!!!')
-        if form.is_valid():
-            print('ZAREJESTROWANO HURRA')
-            user = form.save()
 
+        if form.is_valid():
+            form.save()
+            user = form.cleaned_data.get('email')
+            messages.success(request, 'Konto użytkownika: ' + str(user) + ' zostało utworzone.')
+            return redirect("/uzytkownik/logowanie")
     form = MySignupForm()
     return render(
         request=request,
@@ -23,7 +25,9 @@ def register(request):
             'form': form
         }
     )
-#dekorator sprawdzający czy użytkownik jest zalogowany
+
+
+# dekorator sprawdzający czy użytkownik jest zalogowany
 @login_required
 def panel(request):
     return render(
@@ -40,14 +44,14 @@ def user_login(request):
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-
             user = authenticate(username=username, password=password)
-            print(user)
+
             # sprawdzanie czy użytkownik został znaleziony
             if user is not None:
                 login(request, user)
-
+            return redirect("/uzytkownik/panel")
     form = AuthenticationForm()
+
     return render(
         request=request,
         template_name='users/login.html',
@@ -55,3 +59,8 @@ def user_login(request):
             'form': form
         }
     )
+
+
+def logout_view(request):
+    logout(request)
+    return redirect("/uzytkownik/logowanie")

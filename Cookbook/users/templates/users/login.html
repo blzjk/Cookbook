@@ -8,8 +8,14 @@
     <h1> Logowanie </h1>
     <form method="post">
         {% csrf_token %}
-        {{ form }}
+        {% load crispy_forms_tags %}
+        {{ form | crispy}}
         <input type = "submit" value="Zaloguj">
     </form>
+<div>
+    {% for message in messages %}
+        <p> {{message}}</p>
+    {% endfor %}
+</div>
 </body>
 </html>
