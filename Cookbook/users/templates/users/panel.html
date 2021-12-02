@@ -5,6 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-    JESTEŚ ZALOGOWANY!
+    <form method="post" action="">
+        {% load crispy_forms_tags %}
+        {% csrf_token %}
+        {{ form | crispy }}
+        <input type="submit" value="Dodaj">
+    </form>
 </body>
 </html>

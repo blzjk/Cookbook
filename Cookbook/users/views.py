@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.forms import AuthenticationForm
-from .form import MySignupForm
+from .form import MySignupForm, RecipyForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -30,9 +30,13 @@ def register(request):
 # dekorator sprawdzający czy użytkownik jest zalogowany
 @login_required
 def panel(request):
+    form = RecipyForm()
     return render(
         request,
-        'users/panel.html'
+        'users/panel.html',
+        {
+            'form': form
+        }
     )
 
 
@@ -65,3 +69,5 @@ def user_login(request):
 def logout_view(request):
     logout(request)
     return redirect("/uzytkownik/logowanie")
+
+

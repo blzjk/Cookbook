@@ -1,13 +1,14 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from recipes.models import Recipes
 
 
 class MySignupForm(UserCreationForm):
-    #dodajemy do formularza pole e-mail
+    # dodajemy do formularza pole e-mail
     email = forms.EmailField(required=True)
 
-    #wyświetalnie pola e-mail w formularzu
+    # wyświetalnie pola e-mail w formularzu
     class Meta:
         model = User
         fields = ('email', 'password1', 'password2')
@@ -21,3 +22,9 @@ class MySignupForm(UserCreationForm):
             user.save()
 
         return user
+
+
+class RecipyForm(forms.ModelForm):
+    class Meta:
+        model = Recipes
+        fields = ['title', 'description', 'ingredients', 'category', 'content', 'photo', 'source']
