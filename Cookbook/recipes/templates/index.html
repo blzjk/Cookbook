@@ -1,26 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang ="en">
 <head>
     <title>
         Strona z przepisami
     </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleindex.css">
 </head>
 <body>
-<span class="content">
-    {% for recipe in recipes %}
-        <span class="recipeHeader">
-            {{recipe.kategory}}
-        </span>
-        <span class="recipeDetails">
-            <p><a href="przepis/{{recipe.id}}"> {{recipe.title}}</a></p>
-        </span>
-        <span class="recipeContent">
-            {{ recipe.content|safe }}
-        </span>
-            {{ recipe.author }}
-         </span>
-    {% endfor %}
-</span>
+
+<nav class="menu">
+    <div class="dropdown">
+        <a href="#">Oferta </a>
+        <ul>
+            <li><a href="#">Logo </a></li>
+            <li><a href="#">Wizytowki </a></li>
+            <li><a href="#">Reklama </a></li>
+
+        </ul>
+    </div>
+    <a href="#">O nas </a>
+    <a href="#">Kont</a>
+</nav>
+
+
+
+
+
+<!--<span class="content">-->
+<!--    {% for recipe in recipes %}-->
+<!--    <span class="recipeContainer">-->
+<!--        <span class="recipeHeader">-->
+<!--            {{recipe.kategory}}-->
+<!--        </span>-->
+<!--        <span class="recipeDetails">-->
+<!--            <p><a href="przepis/{{recipe.id}}"> {{recipe.title}}</a></p>-->
+<!--        </span>-->
+<!--        <span class="recipeContent">-->
+<!--            {{ recipe.content|safe }}-->
+<!--        </span>-->
+<!--    </span>-->
+<!--    {% endfor %}-->
+<!--</span>-->
 </body>
 </html>
 
