@@ -19,5 +19,12 @@ body{
     left: 0;
     padding: 0 3rem;
     background: #1F2232;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    allign-items: center;
+}
+
+.menu a {
 
 }
