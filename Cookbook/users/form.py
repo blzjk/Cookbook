@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from recipes.models import Recipes
 
 
+
 class MySignupForm(UserCreationForm):
     # dodajemy do formularza pole e-mail
     email = forms.EmailField(required=True)

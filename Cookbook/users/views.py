@@ -30,6 +30,12 @@ def register(request):
 # dekorator sprawdzający czy użytkownik jest zalogowany
 @login_required
 def panel(request):
+    if request.method == 'POST':
+        form = RecipyForm(request.POST, request.FILES)
+        if form.is_valid():
+            print("HELLO!!!!!!!!!!!")
+            form.save()
+            return redirect('/')
     form = RecipyForm()
     return render(
         request,
