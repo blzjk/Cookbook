@@ -6,7 +6,6 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from models import User
 
 
 @csrf_exempt
@@ -35,7 +34,7 @@ def panel(request):
     if request.method == 'POST':
         form = RecipyForm(request.POST, request.FILES)
         recipe = form.save(commit=False)
-        recipe.author = request.user
+        recipe.author = request.user.id
         recipe.save()
         # if form.is_valid():
         #     print("HELLO!!!!!!!!!!!")
