@@ -42,7 +42,7 @@ class Recipes(models.Model):
     category = models.ForeignKey(Categories, on_delete=models.CASCADE, null=True)
     content = models.TextField(max_length=255)
     date = models.DateTimeField(default=datetime.datetime.now(), blank=True)
-    # author = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=False)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     photo = models.ImageField(blank=True, upload_to='media')
     source = models.URLField(blank=True)
 
@@ -55,7 +55,7 @@ class Vote(models.Model):
     id = models.AutoField(primary_key=True)
     recipe = models.ForeignKey(Recipes, on_delete=models.CASCADE)
     reason = models.TextField()
-    username = models.CharField(max_length=64, null=True)
+    username = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     date = models.DateTimeField(null=True)
 
 

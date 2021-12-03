@@ -6,6 +6,8 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+from models import User
+
 
 @csrf_exempt
 def register(request):
@@ -32,10 +34,13 @@ def register(request):
 def panel(request):
     if request.method == 'POST':
         form = RecipyForm(request.POST, request.FILES)
-        if form.is_valid():
-            print("HELLO!!!!!!!!!!!")
-            form.save()
-            return redirect('/')
+        recipe = form.save(commit=False)
+        recipe.author = request.user
+        recipe.save()
+        # if form.is_valid():
+        #     print("HELLO!!!!!!!!!!!")
+        #     form.save()
+        #     return redirect('/')
     form = RecipyForm()
     return render(
         request,

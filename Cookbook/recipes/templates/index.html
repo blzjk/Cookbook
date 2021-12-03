@@ -8,7 +8,6 @@
 <body>
 <span class="content">
     {% for recipe in recipes %}
-    <span class="recipeContainer">
         <span class="recipeHeader">
             {{recipe.kategory}}
         </span>
@@ -18,7 +17,8 @@
         <span class="recipeContent">
             {{ recipe.content|safe }}
         </span>
-    </span>
+            {{ recipe.author }}
+         </span>
     {% endfor %}
 </span>
 </body>

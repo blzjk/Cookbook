@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from recipes.models import Recipes
+from .models import Recipes
 
 
 
@@ -29,3 +29,5 @@ class RecipyForm(forms.ModelForm):
     class Meta:
         model = Recipes
         fields = ['title', 'description', 'ingredients', 'category', 'content', 'photo', 'source']
+
+
