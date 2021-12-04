@@ -34,7 +34,9 @@ def panel(request):
     if request.method == 'POST':
         form = RecipyForm(request.POST, request.FILES)
         recipe = form.save(commit=False)
-        recipe.author = request.user.id
+        recipe.author = request.user
+        print(request.user)
+
         recipe.save()
         # if form.is_valid():
         #     print("HELLO!!!!!!!!!!!")

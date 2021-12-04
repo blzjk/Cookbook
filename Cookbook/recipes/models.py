@@ -1,4 +1,6 @@
 import datetime
+
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -12,12 +14,6 @@ class Categories(models.Model):
     class Meta:
         verbose_name = "Category"
         verbose_name_plural = "Categories"
-
-
-class User(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=64)
-    email = models.EmailField()
 
 
 class Ingredients(models.Model):
@@ -42,9 +38,9 @@ class Recipes(models.Model):
     category = models.ForeignKey(Categories, on_delete=models.CASCADE, null=True)
     content = models.TextField(max_length=255)
     date = models.DateTimeField(default=datetime.datetime.now(), blank=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     photo = models.ImageField(blank=True, upload_to='media')
     source = models.URLField(blank=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     class Meta:
         verbose_name = "Recipe"
