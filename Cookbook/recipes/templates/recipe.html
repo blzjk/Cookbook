@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load social_share %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,5 +13,8 @@
         {{recipe.content}}
         {{recipe.date}}
     </div>
+{% post_to_facebook object_or_url "Opublikuj na Facebooku!" %}
+{% post_to_twitter "Nowa piosenka: {{object.title}}. Sprawdź to!" object_or_url "Opublikuj na Twitterze" %}
+{% send_email object.title "Nowa piosenka: {{object.title}}. Sprawdź to!" object_or_url "Udostępnij przez e-mail" %}
 </body>
 </html>
