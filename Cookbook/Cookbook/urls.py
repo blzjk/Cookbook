@@ -27,7 +27,9 @@ urlpatterns = [
     path('kategorie/', categories, name='kategorie'),
     path('kategorie/kategoria/<id>/', category, name='kategoria'),
     path('przepis/<id>/', recipe, name='przepis'),
+    path('szukaj/', search, name='szukaj'),
     path('uzytkownik/', include('users.urls'))
+
 ]
 
 

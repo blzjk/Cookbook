@@ -51,3 +51,6 @@ def recipe(request, id):
     except Recipes.DoesNotExist:
         return render(request, '404.html')
 
+def search(request):
+    return render(request, 'szukaj.html')
+
