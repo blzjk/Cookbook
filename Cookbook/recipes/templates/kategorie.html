@@ -1,5 +1,9 @@
+{% include 'menu.html' %}
 
+
+<center><h3>
 {% for cat in categories %}
 <p><a href= "kategoria/{{ cat.id }}"> {{cat.name}}</a></p>
 {% endfor %}
-
+</h3>
+</center>
