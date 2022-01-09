@@ -24,11 +24,11 @@ from recipes.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
+    path('szukaj/', search, name='szukaj'),
     path('kategorie/', categories, name='kategorie'),
     path('kategorie/kategoria/<id>/', category, name='kategoria'),
     path('przepis/<id>/', recipe, name='przepis'),
-    path('losuj/przepis/', random_recipe, name='losuj'),
-    path('szukaj/', search, name='szukaj'),
+    path('przepis/', random_recipe, name='losowanie'),
     path('uzytkownik/', include('users.urls')),
 ]
 
