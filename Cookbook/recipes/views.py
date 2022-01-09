@@ -1,6 +1,7 @@
+import random
+
 from django.http import HttpResponse
 from django.shortcuts import render
-
 from .models import Recipes, Categories
 
 
@@ -11,6 +12,7 @@ def index(request):
     # null = Recipes.objects.filter(category__isnull=True)
     # zawiera = Recipes.objects.filter(content__icontains='boczek')
     # return HttpResponse(zawiera)
+
     recipes = Recipes.objects.all()
     dane = {'recipes': recipes}
     return render(request, 'index.html', dane)
@@ -18,6 +20,7 @@ def index(request):
     # return render(request, 'index.html', {
     #     'recipe': recipe
     # })
+
 
 
 def category(request, id):
@@ -37,9 +40,16 @@ def category(request, id):
 
 
 def categories(request):
-    categories = Categories.objects.all()
+    categories= Categories.objects.all()
     dane = {'categories': categories}
     return render(request, 'kategorie.html', dane)
+
+
+def random_recipe(request):
+    recipes_all = list(Recipes.objects.all())
+    recipes = random.sample(recipes_all, 1)
+    dane = {'recipes': recipes}
+    return render(request, 'random_recipe.html', dane)
 
 
 def recipe(request, id):
@@ -51,6 +61,6 @@ def recipe(request, id):
     except Recipes.DoesNotExist:
         return render(request, '404.html')
 
+
 def search(request):
     return render(request, 'szukaj.html')
-

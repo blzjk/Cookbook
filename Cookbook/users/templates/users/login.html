@@ -17,5 +17,9 @@
         <p> {{message}}</p>
     {% endfor %}
 </div>
+    <div>
+{{ form.errors }}
+Nie masz jeszcze konta? <a href="{% url 'rejestracja' %}">Zarejestruj</a>
+        </div>
 </body>
 </html>

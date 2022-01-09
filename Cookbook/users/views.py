@@ -67,6 +67,7 @@ def user_login(request):
                 login(request, user)
                 return redirect("/uzytkownik/panel")
 
+
     form = AuthenticationForm()
 
     return render(
