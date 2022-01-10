@@ -1,5 +1,4 @@
 import random
-
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Recipes, Categories
@@ -26,7 +25,9 @@ def index(request):
 def category(request, id):
     category_user = Categories.objects.get(pk=id)
     cat_recipe = Recipes.objects.filter(category=category_user)
-    return HttpResponse(cat_recipe)
+    dane = {'recipes': cat_recipe}
+    return render(request, 'index.html', dane)
+    # return HttpResponse(cat_recipe)
 
 
 # def kategories (request, id):
