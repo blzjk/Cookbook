@@ -27,7 +27,6 @@ def category(request, id):
     cat_recipe = Recipes.objects.filter(category=category_user)
     dane = {'recipes': cat_recipe}
     return render(request, 'index.html', dane)
-    # return HttpResponse(cat_recipe)
 
 
 # def kategories (request, id):
@@ -64,4 +63,12 @@ def recipe(request, id):
 
 
 def search(request):
-    return render(request, 'szukaj.html')
+    if 'searched' in request.GET:
+        searched = request.GET['searched']
+    else:
+        searched = False
+    allRecipes = Recipes.objects.filter(title__icontains=searched)
+    dane = { 'recipes' : allRecipes }
+    return render(request, 'search.html', dane)
+
+

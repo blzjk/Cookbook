@@ -1,0 +1,20 @@
+{% include 'menu.html' %}
+
+<center>
+<h1>Wyszukiwarka przepisów </h1>
+
+<form method = GET action="{% url 'szukaj' %}">
+    {% csrf_token %}
+
+    <input type="text" name="searched"/>
+    <button type="submit">Wyszukaj
+    </button>
+</form>
+
+<body>
+{{ searched }}
+{% for recipe in recipes %}
+<p><a href= "/przepis/{{ recipe.id }}"> {{recipe.title}}</a></p>
+{% endfor %}
+</body>
+</center>
