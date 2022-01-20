@@ -30,7 +30,7 @@ def register(request):
 
 # dekorator sprawdzający czy użytkownik jest zalogowany
 @login_required
-def panel(request):
+def add_recipe(request):
     if request.method == 'POST':
         form = RecipyForm(request.POST, request.FILES)
         recipe = form.save(commit=False)
@@ -38,14 +38,10 @@ def panel(request):
         print(request.user)
 
         recipe.save()
-        # if form.is_valid():
-        #     print("HELLO!!!!!!!!!!!")
-        #     form.save()
-        #     return redirect('/')
     form = RecipyForm()
     return render(
         request,
-        'users/panel.html',
+        'users/add.html',
         {
             'form': form
         }
@@ -65,7 +61,7 @@ def user_login(request):
             # sprawdzanie czy użytkownik został znaleziony
             if user is not None:
                 login(request, user)
-                return redirect("/uzytkownik/panel")
+                return redirect("/panel")
 
 
     form = AuthenticationForm()
@@ -82,5 +78,7 @@ def user_login(request):
 def logout_view(request):
     logout(request)
     return redirect("/uzytkownik/logowanie")
+
+
 
 

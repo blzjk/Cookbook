@@ -1,27 +1,6 @@
-{% include 'menu.html' %}
-<!--<!DOCTYPE html>-->
-<html lang ="en">
-<head>
-    <title>Strona z przepisami</title>
+{% extends 'menu.html' %}
 
-
-
-    {% load static %}
-
-    <script defer src="{% static 'js/theme.js'%}"></script>
-    <link rel="stylesheet" href="{% static 'css/index.css' %}"  >
-
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-</head>
-<body>
-
-  <main>
-    <h1>Strona główna</h1>
-
-    <p>
-      <span class="content">
+{% block content %}
     {% for recipe in recipes %}
     <span class="recipeContainer">
         <span class="recipeHeader">
@@ -35,11 +14,5 @@
         </span>
     </span>
     {% endfor %}
-    </p>
-
-
-  </main>
-</span>
-</body>
-</html>
+{% endblock %}
 

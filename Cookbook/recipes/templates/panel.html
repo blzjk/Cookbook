@@ -77,7 +77,7 @@
       </li>
 
       <li class="nav-item">
-        <a href="/uzytkownik/logowanie" class="nav-link">
+        <a href="/uzytkownik/przepis" class="nav-link">
           <svg aria-hidden="true"
                focusable="false"
                data-prefix="fas"
@@ -102,7 +102,7 @@
               ></path>
             </g>
           </svg>
-          <span class="link-text">Logowanie</span>
+          <span class="link-text">Dodaj przepis</span>
         </a>
       </li>
 
@@ -254,8 +254,8 @@
 </span>
 </body>
 
-
 <body>
+
 <center>
     <div class="page-header">
         <h1><a href="/">Sprawdzone przepisy</a></h1>
@@ -263,14 +263,22 @@
     <div class="content container">
         <div class="row">
             <div class="col-md-8">
-            {% block content %}
-            {% endblock %}
+            {% for recipe in recipes %}
+    <span class="recipeContainer">
+        <span class="recipeHeader">
+            {{recipe.kategory}}
+        </span>
+        <span class="recipeDetails">
+            <p><a href="/przepis/{{recipe.id}}"> {{recipe.title}}</a></p>
+        </span>
+        <span class="recipeContent">
+            {{ recipe.content|safe }}
+        </span>
+    </span>
+    {% endfor %}
             </div>
         </div>
     </div>
 </center>
 </body>
 
-</span>
-</body>
-</html>

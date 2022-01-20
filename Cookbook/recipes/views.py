@@ -21,7 +21,6 @@ def index(request):
     # })
 
 
-
 def category(request, id):
     category_user = Categories.objects.get(pk=id)
     cat_recipe = Recipes.objects.filter(category=category_user)
@@ -40,7 +39,7 @@ def category(request, id):
 
 
 def categories(request):
-    categories= Categories.objects.all()
+    categories = Categories.objects.all()
     dane = {'categories': categories}
     return render(request, 'kategorie.html', dane)
 
@@ -68,7 +67,11 @@ def search(request):
     else:
         searched = False
     allRecipes = Recipes.objects.filter(title__icontains=searched)
-    dane = { 'recipes' : allRecipes }
+    dane = {'recipes': allRecipes}
     return render(request, 'search.html', dane)
 
 
+def panel(request):
+    recipes = Recipes.objects.all()
+    dane = {'recipes': recipes}
+    return render(request, 'panel.html', dane)

@@ -20,7 +20,6 @@ from django.urls import path, include
 from recipes.views import *
 
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
@@ -29,6 +28,7 @@ urlpatterns = [
     path('kategorie/kategoria/<id>/', category, name='kategoria'),
     path('przepis/<id>/', recipe, name='przepis'),
     path('przepis/', random_recipe, name='losowanie'),
+    path('panel', panel, name='panel'),
     path('uzytkownik/', include('users.urls')),
 ]
 
