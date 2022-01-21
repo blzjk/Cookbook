@@ -1,7 +1,8 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.forms import AuthenticationForm
-from .form import MySignupForm, RecipyForm
+from .form import MySignupForm, RecipyForm, LoginForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -60,8 +61,17 @@ def user_login(request):
 
             # sprawdzanie czy użytkownik został znaleziony
             if user is not None:
-                login(request, user)
-                return redirect("/panel")
+                if user.is_active:
+                    login(request, user)
+                    return redirect("/panel")
+                else:
+                    return HttpResponse('Konto jest zablokowane')
+            else:
+                return HttpResponse('Nierawidłowe dane uwierzytelniające.')
+    else:
+        form = LoginForm()
+    return render(request, 'users/login.html', {'form': form})
+
 
 
     form = AuthenticationForm()
@@ -75,7 +85,7 @@ def user_login(request):
     )
 
 
-def logout_view(request):
+def user_logout(request):
     logout(request)
     return redirect("/uzytkownik/logowanie")
 

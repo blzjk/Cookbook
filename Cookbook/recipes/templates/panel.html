@@ -1,20 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <title>Strona z przepisami</title>
+    <title>{% block title%}{% endblock %}</title>
 
-
-
-    {% load static %}
+        {% load static %}
 
     <script defer src="{% static 'js/theme.js'%}"></script>
     <link rel="stylesheet" href="{% static 'css/index.css' %}"  >
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-
 </head>
 <body>
+
+<center>
+ <span class="user">
+ {% if request.user.is_authenticated %}
+ Witaj, {{ request.user }}
+ <a href="{% url 'wylogowanie' %}">Wyloguj</a>
+ {% endif %}
+ </span>
+</div>
+</center>
+
+
 <nav class="navbar">
     <ul class="navbar-nav">
       <li class="logo">
@@ -252,33 +262,19 @@
     </ul>
   </nav>
 </span>
-</body>
 
-<body>
 
 <center>
-    <div class="page-header">
-        <h1><a href="/">Sprawdzone przepisy</a></h1>
-    </div>
+
     <div class="content container">
         <div class="row">
             <div class="col-md-8">
-            {% for recipe in recipes %}
-    <span class="recipeContainer">
-        <span class="recipeHeader">
-            {{recipe.kategory}}
-        </span>
-        <span class="recipeDetails">
-            <p><a href="/przepis/{{recipe.id}}"> {{recipe.title}}</a></p>
-        </span>
-        <span class="recipeContent">
-            {{ recipe.content|safe }}
-        </span>
-    </span>
-    {% endfor %}
+            {% block content %}
+            {% endblock %}
             </div>
         </div>
     </div>
 </center>
-</body>
 
+</body>
+</html>

@@ -1,8 +1,8 @@
+from django.forms import ModelForm
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from recipes.models import Recipes
-
 
 
 class MySignupForm(UserCreationForm):
@@ -21,13 +21,15 @@ class MySignupForm(UserCreationForm):
 
         if commit:
             user.save()
-
         return user
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
 
 
 class RecipyForm(forms.ModelForm):
     class Meta:
         model = Recipes
         fields = ['title', 'description', 'ingredients', 'category', 'content', 'photo', 'source']
-
-

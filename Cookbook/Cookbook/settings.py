@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os.path
 from pathlib import Path
+from django.urls import reverse, reverse_lazy
+
+LOGIN_REDIRECT_URL = reverse_lazy('panel')
+LOGIN_URL = reverse_lazy('logowanie')
+LOGOUT_URL = reverse_lazy('logout')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

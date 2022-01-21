@@ -1,4 +1,6 @@
 import random
+
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Recipes, Categories
@@ -26,16 +28,6 @@ def category(request, id):
     cat_recipe = Recipes.objects.filter(category=category_user)
     dane = {'recipes': cat_recipe}
     return render(request, 'index.html', dane)
-
-
-# def kategories (request, id):
-#     kategory_user = Kategories.objects.get(pk=id)
-#     kategory_recipe = Recipes.objects.filter(kategory = kategory_user)
-#     kategories = Kategories.objects.all()
-#     dane = {'kategory_user' : kategory_user,
-#             'kategory_recipe' : kategory_recipe,
-#             'kategories' : kategories }
-#     return render(request, 'kategorie.html', dane)
 
 
 def categories(request):
@@ -70,7 +62,7 @@ def search(request):
     dane = {'recipes': allRecipes}
     return render(request, 'search.html', dane)
 
-
+@login_required
 def panel(request):
     recipes = Recipes.objects.all()
     dane = {'recipes': recipes}

@@ -1,13 +1,11 @@
-{% include 'menu.html' %}
+{% extends 'panel.html' %}
+{% block title %}Logowanie{% endblock %}
+{% block content %}
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Logowanie</title>
-</head>
-<body>
+
 <center>
     <h1> Logowanie </h1>
+    <p>Wypełnij formularz, aby się zalogować:</p>
     <form method="post">
         {% csrf_token %}
         {% load crispy_forms_tags %}
@@ -24,5 +22,4 @@
 Nie masz jeszcze konta? <a href="{% url 'rejestracja' %}">Zarejestruj</a>
         </div>
     </center>
-</body>
-</html>
+{% endblock  %}
