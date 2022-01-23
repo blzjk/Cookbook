@@ -11,7 +11,15 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os.path
 from pathlib import Path
-from django.urls import reverse, reverse_lazy
+
+from django.urls import reverse_lazy
+
+EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'cookbook.projekt.grupowy'
+EMAIL_HOST_PASSWORD = 'projekt123'
+EMAIL_USE_TLS = True
 
 LOGIN_REDIRECT_URL = reverse_lazy('panel')
 LOGIN_URL = reverse_lazy('logowanie')

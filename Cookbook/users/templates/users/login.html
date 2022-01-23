@@ -12,6 +12,7 @@
         {{ form | crispy}}
         <input type = "submit" value="Zaloguj">
     </form>
+    <p><a href="{% url 'password_reset' %}">Zapomniałeś hasła?</a></p>
 <div>
     {% for message in messages %}
         <p> {{message}}</p>
