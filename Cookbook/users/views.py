@@ -17,8 +17,10 @@ def register(request):
         if form.is_valid():
             form.save()
             user = form.cleaned_data.get('email')
-            messages.success(request, 'Konto użytkownika: ' + str(user) + ' zostało utworzone.')
-            return redirect("/uzytkownik/logowanie")
+            # messages.success(request, 'Konto użytkownika: ' + str(user) + ' zostało utworzone.')
+            return render(
+                request, 'users/register_done.html', {'user' : user}
+            )
     form = MySignupForm()
     return render(
         request=request,

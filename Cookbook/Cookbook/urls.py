@@ -30,6 +30,7 @@ urlpatterns = [
     path('przepis/', random_recipe, name='losowanie'),
     path('panel', panel, name='panel'),
     path('uzytkownik/', include('users.urls')),
+    path('social-auth/', include('social_django.urls', namespace='social'))
 ]
 
 

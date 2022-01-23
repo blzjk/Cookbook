@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'django_social_share'
+    'django_social_share',
+    'social_django'
 ]
 
 MIDDLEWARE = [
@@ -64,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'Cookbook.urls'
@@ -79,6 +81,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -152,3 +156,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'statics'),
 ]
+
+ALLOWED_HOSTS = ['cookbook.pl', 'localhost', '127.0.0.1']
+
+AUTHENTICATION_BACKENDS = [
+'social_core.backends.facebook.FacebookOAuth2',
+]
+
+SOCIAL_AUTH_FACEBOOK_KEY = '524468645391708' # Wartość App ID pobrana z serwisu Facebook.
+SOCIAL_AUTH_FACEBOOK_SECRET = 'ec4df5d1cffa1018ba9b8f73bd6fa549' # Wartość App Secret pobrana z serwisu Facebook.

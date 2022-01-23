@@ -22,5 +22,10 @@
 {{ form.errors }}
 Nie masz jeszcze konta? <a href="{% url 'rejestracja' %}">Zarejestruj</a>
         </div>
+    <div class="social">
+ <ul>
+ <li class='facebook'><a href="{% url 'social:begin' 'facebook' %}">Zaloguj się za pomocą konta Facebook</a></li>
+ </ul>
+</div>
     </center>
 {% endblock  %}
