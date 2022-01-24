@@ -2,6 +2,13 @@
 {% block title %}Przepis{% endblock %}
 {% block content %}
 {% for recipe in recipes %}
-<p><a href= "/przepis/{{ recipe.id }}"> {{recipe.title}}</a></p>
+<p><a href= "/przepis/{{ recipe.id }}/"> {{recipe.title}}</a></p>
+    <div>
+         <img src = '/{{recipe.photo}}'/>
+    </div>
+    <div>
+        Żródło:
+        <p><a href="{{ recipe.source }}"> {{ recipe.source }}</a></p>
+    </div>
 {% endfor %}
 {% endblock %}

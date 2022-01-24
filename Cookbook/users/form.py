@@ -34,10 +34,7 @@ class RecipyForm(forms.ModelForm):
     class Meta:
         model = Recipes
         fields = ['title', 'description', 'ingredients', 'category', 'content', 'photo', 'source']
-        # ingredients = forms.ModelMultipleChoiceField(
-        #     queryset=Ingredients.objects.all(),
-        #     widget=forms.CheckboxSelectMultiple
-        # )
+
 
 class IngredientsForm(forms.ModelForm):
     class Meta:

@@ -6,7 +6,7 @@
     <main>
     <p>
         <div class="recipeHeader">
-        {{recipe.title}}
+       {{recipe.title}}
     </div>
     <div class="recipeContent">
         {{recipe.content}}
@@ -16,6 +16,10 @@
     </div>
     <div>
          <img src = '/{{recipe.photo}}'/>
+    </div>
+    <div>
+        Żródło:
+        <p><a href="{{ recipe.source }}"> {{ recipe.source }}</a></p>
     </div>
 
 {% post_to_facebook object_or_url "Opublikuj na Facebooku!" %}

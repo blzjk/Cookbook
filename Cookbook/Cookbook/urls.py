@@ -26,7 +26,7 @@ urlpatterns = [
     path('szukaj/', search, name='szukaj'),
     path('kategorie/', categories, name='kategorie'),
     path('kategoria/<id>', category, name='kategoria'),
-    path('przepis/<id>', recipe, name='przepis'),
+    path('przepis/<id>/', recipe, name='przepis'),
     path('przepis/', random_recipe, name='losowanie'),
     path('panel', panel, name='panel'),
     path('uzytkownik/', include('users.urls')),

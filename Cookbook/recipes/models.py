@@ -36,7 +36,7 @@ class Recipes(models.Model):
     description = models.CharField(null=True, max_length=255)
     ingredients = models.ManyToManyField(Ingredients)
     category = models.ForeignKey(Categories, on_delete=models.CASCADE, null=True)
-    content = models.TextField(max_length=255)
+    content = models.TextField(max_length=2000)
     date = models.DateTimeField(default=datetime.datetime.now(), blank=True)
     photo = models.ImageField(blank=True, upload_to='media')
     source = models.URLField(blank=True)

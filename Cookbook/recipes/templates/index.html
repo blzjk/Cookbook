@@ -1,18 +1,20 @@
 {% extends 'menu.html' %}
 {% block title %}Strona główna{% endblock %}
 {% block content %}
+
     {% for recipe in recipes %}
     <span class="recipeContainer">
         <span class="recipeHeader">
             {{recipe.kategory}}
         </span>
         <span class="recipeDetails">
-            <p><a href="/przepis/{{recipe.id}}"> {{recipe.title}}</a></p>
+            <p><a href="/przepis/{{recipe.id}}/"> {{recipe.title}}</a></p>
         </span>
-        <span class="recipeContent">
-            {{ recipe.content|safe }}
-        </span>
+        <div>
+         <img src = '/{{recipe.photo}}'/>
+    </div>
     </span>
+
     {% endfor %}
 {% endblock %}
 
