@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.forms import AuthenticationForm
-from .form import MySignupForm, RecipyForm, LoginForm
+from .form import MySignupForm, RecipyForm, LoginForm, IngredientsForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -74,8 +74,6 @@ def user_login(request):
         form = LoginForm()
     return render(request, 'users/login.html', {'form': form})
 
-
-
     form = AuthenticationForm()
 
     return render(
@@ -91,6 +89,21 @@ def user_logout(request):
     logout(request)
     return redirect("/uzytkownik/logowanie")
 
+
+@login_required
+def add_ingredient(request):
+    if request.method == 'POST':
+        form = IngredientsForm(request.POST, request.FILES)
+        ingredient = form.save(commit=False)
+        ingredient.save()
+    form = IngredientsForm()
+    return render(
+        request,
+        'users/add_ingredient.html',
+        {
+            'form': form
+        }
+    )
 
 
 

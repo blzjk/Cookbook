@@ -5,22 +5,14 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Recipes, Categories
 
-
+#wyświetlanych 10 ostatnio dodanych przepisów
 def index(request):
-    # wszystkie = Recipes.objects.all()
-    # jeden = Recipes.objects.get(pk=1)
-    # cat_name = Categories.objects.get(id=1)
-    # null = Recipes.objects.filter(category__isnull=True)
-    # zawiera = Recipes.objects.filter(content__icontains='boczek')
-    # return HttpResponse(zawiera)
-
-    recipes = Recipes.objects.all()
+    maxId = Recipes.objects.latest('id').id
+    recipes = Recipes.objects.filter(
+        id__lte = maxId, id__gte = maxId - 10
+    )
     dane = {'recipes': recipes}
     return render(request, 'index.html', dane)
-    # recipe = Recipes.objects.all()
-    # return render(request, 'index.html', {
-    #     'recipe': recipe
-    # })
 
 
 def category(request, id):
@@ -67,3 +59,4 @@ def panel(request):
     recipes = Recipes.objects.all()
     dane = {'recipes': recipes}
     return render(request, 'panel.html', dane)
+

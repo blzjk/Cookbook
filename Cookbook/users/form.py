@@ -2,7 +2,8 @@ from django.forms import ModelForm
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from recipes.models import Recipes
+from recipes.models import Recipes, Ingredients
+
 
 
 class MySignupForm(UserCreationForm):
@@ -33,3 +34,16 @@ class RecipyForm(forms.ModelForm):
     class Meta:
         model = Recipes
         fields = ['title', 'description', 'ingredients', 'category', 'content', 'photo', 'source']
+        # ingredients = forms.ModelMultipleChoiceField(
+        #     queryset=Ingredients.objects.all(),
+        #     widget=forms.CheckboxSelectMultiple
+        # )
+
+class IngredientsForm(forms.ModelForm):
+    class Meta:
+        model = Ingredients
+        fields = ['name']
+
+
+
+

@@ -2,14 +2,14 @@ from django.contrib.auth import views as auth_views
 from . import views
 from django.urls import path, reverse_lazy
 
-from .views import add_recipe
-
+from .views import add_recipe, add_ingredient
 
 urlpatterns = [
     path('rejestracja', views.register, name='rejestracja'),
     path('logowanie', views.user_login, name='logowanie'),
     path('wylogowanie', views.user_logout, name='wylogowanie'),
     path('przepis', add_recipe, name='przepis'),
+    path('składniki', add_ingredient, name='składniki'),
     path('haslo/', auth_views.PasswordChangeView.as_view(template_name='password_change_form.html'), name='haslo'),
     path('zmiana-hasla/', auth_views.PasswordChangeDoneView.as_view(template_name='password_change_done.html'), name='password_change_done'),
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='password_reset_form.html'), name='password_reset'),
