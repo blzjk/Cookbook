@@ -7,7 +7,7 @@
     <p>
         <div class="recipeHeader">
        {{recipe.title}}
-    </div>
+        </div>
     <div class="recipeContent">
         {{recipe.content}}
     </div>
@@ -21,6 +21,20 @@
         Żródło:
         <p><a href="{{ recipe.source }}"> {{ recipe.source }}</a></p>
     </div>
+        <div class="rating">
+            Ocena: {{ rating.avg }}/{{ rating.count }}
+        </div>
+        <div class="rateRecipe">
+            {% if user.is_authenticated %}
+            Oceń:
+            <form method="POST" action="{% url 'ocena' %}">
+                {%csrf_token%}
+                <input name="rate" type="hidden" value="1">
+                <input name="recipeId" type="hidden" value={{recipe.id}}>
+                <input type="submit" value="1">
+            </form>
+            {% endif %}
+        </div>
 
 {% post_to_facebook object_or_url "Opublikuj na Facebooku!" %}
 {% post_to_twitter "Super przepis: {{object.title}}. Sprawdź to!" object_or_url "Opublikuj na Twitterze" %}

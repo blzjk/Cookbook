@@ -3,7 +3,7 @@ from django.utils.html import format_html
 from .models import Recipes, Ingredients, Vote, Rating, Categories
 
 # Register your models here.
-
+admin.site.register(Rating)
 
 class RatingInLine(admin.StackedInline):
     model = Rating

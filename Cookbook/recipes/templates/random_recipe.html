@@ -4,11 +4,14 @@
 {% for recipe in recipes %}
 <p><a href= "/przepis/{{ recipe.id }}/"> {{recipe.title}}</a></p>
     <div>
-         <img src = '/{{recipe.photo}}'/>
+        <a href="/przepis/{{recipe.id}}/"><img src = '/{{recipe.photo}}'/></a>
+    </div>
+
+    <div>
+        Żródło: <p><a href="{{ recipe.source }}"> {{ recipe.source }}</a></p>
     </div>
     <div>
-        Żródło:
-        <p><a href="{{ recipe.source }}"> {{ recipe.source }}</a></p>
+        Dodano przez: {{recipe.author}}
     </div>
 {% endfor %}
 {% endblock %}

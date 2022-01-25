@@ -93,17 +93,20 @@ def user_logout(request):
 @login_required
 def add_ingredient(request):
     if request.method == 'POST':
+        messages.success(request, 'Dodałeś nowy składnik.')
         form = IngredientsForm(request.POST, request.FILES)
         ingredient = form.save(commit=False)
         ingredient.save()
     form = IngredientsForm()
+
     return render(
         request,
-        'users/add_ingredient.html',
+        'users/add.html',
         {
             'form': form
         }
     )
+
 
 
 

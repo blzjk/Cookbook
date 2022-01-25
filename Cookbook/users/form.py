@@ -41,6 +41,8 @@ class IngredientsForm(forms.ModelForm):
         model = Ingredients
         fields = ['name']
 
-
+class RatingForm(forms.Form):
+    rate = forms.IntegerField()
+    recipeId = forms.IntegerField()
 
 

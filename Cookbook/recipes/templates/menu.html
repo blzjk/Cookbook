@@ -12,12 +12,12 @@
   </div>
 {% endblock %}
     {% load static %}
-
     <script defer src="{% static 'js/theme.js'%}"></script>
     <link rel="stylesheet" href="{% static 'css/index.css' %}"  >
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
     </center>
 <body>
@@ -295,7 +295,15 @@
     <div class="page-header">
         <h1><a href="/">Sprawdzone przepisy</a></h1>
     </div>
-    <div class="content container">
+
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+    {% endfor %}
+</ul>
+{% endif %}
+    <div class="content">
         <div class="row">
             <div class="col-md-8">
                 {% block content %}

@@ -60,7 +60,7 @@ class Rating(models.Model):
     count = models.PositiveIntegerField(default=0)
     avg = models.FloatField(default=0)
 
-    def AddVote(self, mark):
+    def CalculateNewAverage(self, mark):
         if 0 <= mark <= 5:
             sum = self.count * self.avg
             sum = sum + mark
