@@ -1,12 +1,18 @@
 {% extends 'index.html' %}
 {% block title %}Przepis{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <script defer src="{% static 'js/theme.js'%}"></script>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}"  >
+{% endblock %}
+
 {% block content %}
 {% for recipe in recipes %}
 <p><a href= "/przepis/{{ recipe.id }}/"> {{recipe.title}}</a></p>
     <div>
-        <a href="/przepis/{{recipe.id}}/"><img src = '/{{recipe.photo}}'/></a>
+        <a href="/przepis/{{recipe.id}}/"><img src = '/{{recipe.photo}}' style="max-height:250px;max-width:250px;height:auto,width:auto"></a>
     </div>
-
     <div>
         Żródło: <p><a href="{{ recipe.source }}"> {{ recipe.source }}</a></p>
     </div>

@@ -7,6 +7,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+from recipes.models import Ingredients
 
 
 @csrf_exempt
@@ -38,7 +39,7 @@ def add_recipe(request):
         form = RecipyForm(request.POST, request.FILES)
         recipe = form.save(commit=False)
         recipe.author = request.user
-        print(request.user)
+        messages.success(request, 'Dodałeś nowy przepis.')
 
         recipe.save()
     form = RecipyForm()
@@ -54,6 +55,7 @@ def add_recipe(request):
 def user_login(request):
     # odebranie formularza
     if request.method == 'POST':
+        messages.success(request, 'Przepis został poprawnie dodany.')
         form = AuthenticationForm(request, data=request.POST)
 
         if form.is_valid():
@@ -98,12 +100,11 @@ def add_ingredient(request):
         ingredient = form.save(commit=False)
         ingredient.save()
     form = IngredientsForm()
-
     return render(
         request,
-        'users/add.html',
+        'users/add_ingredient.html',
         {
-            'form': form
+            'form': form,
         }
     )
 

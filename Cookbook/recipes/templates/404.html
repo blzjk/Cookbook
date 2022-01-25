@@ -1,4 +1,11 @@
-{% extends 'index.html' %}
+{% extends 'menu.html' %}
+
+{% block css %}
+    {% load static %}
+    <script defer src="{% static 'js/theme.js'%}"></script>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}"  >
+{% endblock %}
+
 {% block title %}Strona nie istnieje!{% endblock %}
 {% block content %}
 Na tej stronie nie ma jeszcze żadnego przepisu.

@@ -1,5 +1,12 @@
 {% extends 'menu.html' %}
 {% block title %}Wyszukiwarka{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <script defer src="{% static 'js/theme.js'%}"></script>
+    <link rel="stylesheet" href="{% static 'css/szukaj.css' %}"  >
+{% endblock %}
+
 {% block content %}
 <center>
 <h1>Wyszukiwarka</h1>

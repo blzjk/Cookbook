@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <center>
 <head>
-    <title>{% block title%}{% endblock %}</title>
+    <title>{% block title%}
+        {% endblock %}
+    </title>
 {% block header %}
   <div id="nav">
     {% if user.is_authenticated %}
@@ -11,9 +13,9 @@
     {% endif %}
   </div>
 {% endblock %}
-    {% load static %}
-    <script defer src="{% static 'js/theme.js'%}"></script>
-    <link rel="stylesheet" href="{% static 'css/index.css' %}"  >
+
+    {% block css %}
+    {% endblock %}
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

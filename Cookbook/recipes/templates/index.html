@@ -1,5 +1,12 @@
 {% extends 'menu.html' %}
 {% block title %}Strona główna{% endblock %}
+
+    {% block css %}
+    {% load static %}
+    <script defer src="{% static 'js/theme.js'%}"></script>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" >
+    {% endblock %}
+
 {% block content %}
     {% for recipe in recipes %}
 <span class="recipeContainer" xmlns:add="http://www.w3.org/1999/xhtml">
@@ -10,13 +17,13 @@
             <p><a href="/przepis/{{recipe.id}}/"> {{recipe.title}}</a></p>
         </span>
         <div>
-         <a href="/przepis/{{recipe.id}}/"><img src = '/{{recipe.photo}}' width="300", height="100"/></a>
+         <a href="/przepis/{{recipe.id}}/"><img src = '/{{recipe.photo}}' style="max-height:150px;max-width:300px;height:auto,width:auto"/></a>
         </div>
     </span>
     {% endfor %}
 
     {% for page in pagecount %}
-        <span><a href="{% url 'strona' strona|add:'1'%}">{{ strona | add:'1' }}</a></span>
+        <span><a href="{% url 'strona' page|add:'1'%}">{{ page|add:'1' }}</a></span>
     {% endfor %}
 
 {% endblock %}

@@ -1,11 +1,11 @@
-import random, math
+import math
+import random
 
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from users.form import RatingForm
 
 from .models import Recipes, Categories, Rating
-from users.form import RatingForm
 
 
 def index(request):
@@ -16,8 +16,8 @@ def index(request):
 def index2(request, page):
     maxId = Recipes.objects.latest('id').id
     recipes = Recipes.objects.filter(
-        id__lte = maxId - ((page-1))*3,
-        id__gt = maxId - 3 - ((page-1)*3)
+        id__lte =maxId - ((page - 1)) * 3,
+        id__gt = maxId - 3 - ((page - 1) * 3)
     )
     #wyświetlanie przepisu ostatnio dodanego na samej górze
     recipes = recipes.order_by('-id')
@@ -58,6 +58,7 @@ def recipe(request, id):
         return render(request, 'recipe.html', {
             'recipe': recipe_user,
             'rating': avg,
+            'ratingRange': range(5)
         })
     except Recipes.DoesNotExist:
         return render(request, '404.html')
@@ -67,6 +68,7 @@ def recipe(request, id):
         return render(request, 'recipe.html', {
             'recipe': recipe_user,
             'rating': newRating,
+            'ratingRange': range(5)
         })
 
 
