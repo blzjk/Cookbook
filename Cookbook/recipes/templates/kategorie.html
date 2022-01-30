@@ -8,12 +8,13 @@
     {% endblock %}
 
 {% block content %}
-<center><h3>
+<span class="category">
+    <h3>
 {% for cat in categories %}
- <span class="category">
+
 <p><a href= "/kategoria/{{ cat.id }}/"> {{cat.name}}</a></p>
- </span>
 {% endfor %}
+
 </h3>
-</center>
+ </span>
 {% endblock %}l>

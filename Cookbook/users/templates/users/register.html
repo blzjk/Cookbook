@@ -5,11 +5,15 @@
     <script defer src="{% static 'js/theme.js'%}"></script>
     <link rel="stylesheet" href="{% static 'css/index.css' %}" >
     {% endblock %}
-
 {% block title %}Rejestracja{% endblock %}
+
 {% block content %}
-<h1>Rejestracja</h1>
-<div>
+<section id="form">
+<h1 class = "primary">Rejestracja</h1>
+</section>
+
+<div class="form">
+    <div>
   <form method="POST">
     {% load crispy_forms_tags %}
     {% csrf_token %}
@@ -21,4 +25,5 @@
   {{ form.errors }}
 Posiadasz już konto? <a href="{% url 'logowanie' %}">Zaloguj</a>
 </div>
+    </div>
 {% endblock %}

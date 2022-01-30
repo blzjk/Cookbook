@@ -8,12 +8,12 @@
     {% endblock %}
 
 {% block content %}
-<center>
-    <h1> Logowanie </h1>
-    <p>Wypełnij formularz, aby się zalogować:</p>
 
-
-
+<section id="form">
+    <h1 class = "primary"> Logowanie </h1>
+</section>
+<div class="form">
+    <div>
     <form method="post">
         {% csrf_token %}
         {% load crispy_forms_tags %}
@@ -21,17 +21,17 @@
         <input type = "submit" value="Zaloguj">
     </form>
     <p><a href="{% url 'password_reset' %}">Zapomniałeś hasła?</a></p>
-<div>
 
 </div>
     <div>
 {{ form.errors }}
 Nie masz jeszcze konta? <a href="{% url 'rejestracja' %}">Zarejestruj</a>
         </div>
+
     <div class="social">
  <ul>
  <li class='facebook'><a href="{% url 'social:begin' 'facebook' %}">Zaloguj się za pomocą konta Facebook</a></li>
  </ul>
 </div>
-    </center>
+</div>
 {% endblock  %}

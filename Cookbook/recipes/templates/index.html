@@ -8,9 +8,10 @@
     {% endblock %}
 
 {% block content %}
+<div class = "index">
     {% for recipe in recipes %}
 
-<span class="recipeContainer">
+<div class="box">
         <span class="recipeHeader">
             {{recipe.kategory}}
         </span>
@@ -18,15 +19,15 @@
             <p><a href="/przepis/{{recipe.id}}/"> {{recipe.title}}</a></p>
         </span>
         <span class="recipeURL">
-         <a href="/przepis/{{recipe.id}}/"><img src = '/{{recipe.photo}}' style="max-height:150px;max-width:300px;height:auto,width:auto"/></a>
+         <a href="/przepis/{{recipe.id}}/"><img src = '/{{recipe.photo}}' style="max-height:150px;max-width:300px;height:auto,width:auto; border-radius: 10px"/></a>
         </span>
-    </span>
+</div>
     {% endfor %}
-    <div>
+    <div id="page">
     {% for page in pagecount %}
         <span><a href="{% url 'strona' page|add:'1'%}">{{ page|add:'1' }}</a></span>
     {% endfor %}
     </div>
-
+</div>
 {% endblock %}
 

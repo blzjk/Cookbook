@@ -9,6 +9,8 @@
     {% endblock %}
 
 {% block content %}
+
+
     <main>
     <p>
         <div class="recipeHeader">
@@ -52,6 +54,7 @@
 {% post_to_twitter "Super przepis: {{object.title}}. Sprawdź to!" object_or_url "Opublikuj na Twitterze" %}
 {% send_email object.title "Super przepis: {{object.title}}. Sprawdź to!" object_or_url "Udostępnij przez e-mail" %}
     </p>
+
 </main>
 {% endblock %}
 

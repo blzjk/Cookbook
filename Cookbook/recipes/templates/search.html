@@ -8,14 +8,14 @@
     {% endblock %}
 
 {% block content %}
-<center>
-<h1>Wyszukiwarka</h1>
+
+<h2 id = "textsearch">Wyszukiwarka</h2>
 <body>
-<form method = GET action="{% url 'szukaj' %}">
+<form method = GET action="{% url 'szukaj' %}" id = "search">
     {% csrf_token %}
 
     <input type="text" name="searched"/>
-    <button type="submit">Wyszukaj
+    <button type="submit" class="btn">Wyszukaj
     </button>
 </form>
 
@@ -29,5 +29,5 @@
         </span>
 {% endfor %}
 </body>
-</center>
+
 {% endblock %}
