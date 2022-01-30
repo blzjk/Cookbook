@@ -1,11 +1,19 @@
 {% extends 'panel.html' %}
 {% block title %}Logowanie{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <script defer src="{% static 'js/theme.js'%}"></script>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" >
+    {% endblock %}
+
 {% block content %}
-
-
 <center>
     <h1> Logowanie </h1>
     <p>Wypełnij formularz, aby się zalogować:</p>
+
+
+
     <form method="post">
         {% csrf_token %}
         {% load crispy_forms_tags %}
@@ -14,9 +22,7 @@
     </form>
     <p><a href="{% url 'password_reset' %}">Zapomniałeś hasła?</a></p>
 <div>
-    {% for message in messages %}
-        <p> {{message}}</p>
-    {% endfor %}
+
 </div>
     <div>
 {{ form.errors }}

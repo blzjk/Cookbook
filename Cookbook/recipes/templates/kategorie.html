@@ -4,13 +4,15 @@
 {% block css %}
     {% load static %}
     <script defer src="{% static 'js/theme.js'%}"></script>
-    <link rel="stylesheet" href="{% static 'css/kategoria.css' %}"  >
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" >
     {% endblock %}
 
 {% block content %}
 <center><h3>
 {% for cat in categories %}
+ <span class="category">
 <p><a href= "/kategoria/{{ cat.id }}/"> {{cat.name}}</a></p>
+ </span>
 {% endfor %}
 </h3>
 </center>

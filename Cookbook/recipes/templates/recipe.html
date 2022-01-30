@@ -5,7 +5,7 @@
 {% block css %}
     {% load static %}
     <script defer src="{% static 'js/theme.js'%}"></script>
-    <link rel="stylesheet" href="{% static 'css/recipe.css' %}"  >
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" >
     {% endblock %}
 
 {% block content %}
@@ -34,6 +34,7 @@
             {% if user.is_authenticated %}
             Oceń:
             {%for rate in ratingRange%}
+
             <form method="POST" action="{% url 'ocena' %}">
                 {%csrf_token%}
                 <input name="rate" type="hidden" value={{rate|add:"1"}}>

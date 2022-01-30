@@ -9,22 +9,24 @@
 
 {% block content %}
     {% for recipe in recipes %}
-<span class="recipeContainer" xmlns:add="http://www.w3.org/1999/xhtml">
+
+<span class="recipeContainer">
         <span class="recipeHeader">
             {{recipe.kategory}}
         </span>
         <span class="recipeDetails">
             <p><a href="/przepis/{{recipe.id}}/"> {{recipe.title}}</a></p>
         </span>
-        <div>
+        <span class="recipeURL">
          <a href="/przepis/{{recipe.id}}/"><img src = '/{{recipe.photo}}' style="max-height:150px;max-width:300px;height:auto,width:auto"/></a>
-        </div>
+        </span>
     </span>
     {% endfor %}
-
+    <div>
     {% for page in pagecount %}
         <span><a href="{% url 'strona' page|add:'1'%}">{{ page|add:'1' }}</a></span>
     {% endfor %}
+    </div>
 
 {% endblock %}
 

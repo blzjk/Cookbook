@@ -1,4 +1,11 @@
 {% extends "panel.html" %}
+
+{% block css %}
+    {% load static %}
+    <script defer src="{% static 'js/theme.js'%}"></script>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" >
+    {% endblock %}
+
 {% block title %}Witaj{% endblock %}
 {% block content %}
  <h1>Witaj, {{ user }}!</h1>

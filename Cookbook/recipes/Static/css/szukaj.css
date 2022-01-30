@@ -8,6 +8,15 @@
   --transition-speed: 600ms;
 }
 
+.header {
+  background: url("/images/900x400.png");
+  padding: 20px;
+  text-align: left;
+  background: #7cdde1;
+  color: white;
+  font-size: 30px;
+}
+
 body {
   color: black;
   background-color: white;

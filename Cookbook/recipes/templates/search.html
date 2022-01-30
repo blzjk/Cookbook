@@ -4,13 +4,13 @@
 {% block css %}
     {% load static %}
     <script defer src="{% static 'js/theme.js'%}"></script>
-    <link rel="stylesheet" href="{% static 'css/szukaj.css' %}"  >
-{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" >
+    {% endblock %}
 
 {% block content %}
 <center>
 <h1>Wyszukiwarka</h1>
-
+<body>
 <form method = GET action="{% url 'szukaj' %}">
     {% csrf_token %}
 
@@ -18,7 +18,7 @@
     <button type="submit">Wyszukaj
     </button>
 </form>
-<body>
+
 {{ searched }}
 {% for recipe in recipes %}
  <span class="recipeDetails">

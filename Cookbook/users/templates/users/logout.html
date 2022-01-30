@@ -1,5 +1,12 @@
 {% extends 'panel.html' %}
 {% block title %}Wylogowanie{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <script defer src="{% static 'js/theme.js'%}"></script>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" >
+    {% endblock %}
+
 {% block content %}
 <h1> Wylogowanie </h1>
 <p>Zostałeś pomyślnie wylogowany. Możesz <a href="{% url 'logowanie' %}">zalogować się ponownie.</a> </p>
