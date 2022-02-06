@@ -55,7 +55,7 @@ def add_recipe(request):
 def user_login(request):
     # odebranie formularza
     if request.method == 'POST':
-        messages.success(request, 'Przepis został poprawnie dodany.')
+        messages.success(request, 'Zostałeś poprawnie zalogowany.')
         form = AuthenticationForm(request, data=request.POST)
 
         if form.is_valid():
@@ -76,15 +76,6 @@ def user_login(request):
         form = LoginForm()
     return render(request, 'users/login.html', {'form': form})
 
-    form = AuthenticationForm()
-
-    return render(
-        request=request,
-        template_name='users/login.html',
-        context={
-            'form': form
-        }
-    )
 
 
 def user_logout(request):

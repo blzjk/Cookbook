@@ -1,11 +1,6 @@
 {% extends 'index.html' %}
 {% block title %}Przepis{% endblock %}
 
-{% block css %}
-    {% load static %}
-    <script defer src="{% static 'js/theme.js'%}"></script>
-    <link rel="stylesheet" href="{% static 'css/index.css' %}"  >
-{% endblock %}
 
 {% block content %}
 {% for recipe in recipes %}

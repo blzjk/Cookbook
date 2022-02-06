@@ -1,17 +1,12 @@
 {% extends 'menu.html' %}
 {% block title %}Strona główna{% endblock %}
 
-    {% block css %}
-    {% load static %}
-    <script defer src="{% static 'js/theme.js'%}"></script>
-    <link rel="stylesheet" href="{% static 'css/index.css' %}" >
-    {% endblock %}
+
 
 {% block content %}
 <div class = "index">
     {% for recipe in recipes %}
-
-<div class="box">
+    <div class="box">
         <span class="recipeHeader">
             {{recipe.kategory}}
         </span>
@@ -21,9 +16,9 @@
         <span class="recipeURL">
          <a href="/przepis/{{recipe.id}}/"><img src = '/{{recipe.photo}}' style="max-height:150px;max-width:300px;height:auto,width:auto; border-radius: 10px"/></a>
         </span>
-</div>
+    </div>
     {% endfor %}
-    <div id="page">
+    <div class="pageNumber">
     {% for page in pagecount %}
         <span><a href="{% url 'strona' page|add:'1'%}">{{ page|add:'1' }}</a></span>
     {% endfor %}

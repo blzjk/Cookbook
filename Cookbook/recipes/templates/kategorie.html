@@ -1,20 +1,15 @@
 {% extends 'menu.html' %}
 {% block title %}Kategorie{% endblock %}
 
-{% block css %}
-    {% load static %}
-    <script defer src="{% static 'js/theme.js'%}"></script>
-    <link rel="stylesheet" href="{% static 'css/index.css' %}" >
-    {% endblock %}
 
 {% block content %}
-<span class="category">
+
     <h3>
 {% for cat in categories %}
-
+<div class="category">
 <p><a href= "/kategoria/{{ cat.id }}/"> {{cat.name}}</a></p>
 {% endfor %}
 
 </h3>
- </span>
+</div>
 {% endblock %}l>
