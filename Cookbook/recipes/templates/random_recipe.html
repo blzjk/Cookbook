@@ -4,15 +4,21 @@
 
 {% block content %}
 {% for recipe in recipes %}
-<p><a href= "/przepis/{{ recipe.id }}/"> {{recipe.title}}</a></p>
-    <div>
+<section class="recipe">
+<div id="recipeRandom">
+    <div class="recipeTitle">
+        <p><a href= "/przepis/{{ recipe.id }}/"> {{recipe.title}}</a></p>
+    </div>    
+    <div class="recipePhoto">
         <a href="/przepis/{{recipe.id}}/"><img src = '/{{recipe.photo}}' style="max-height:250px;max-width:250px;height:auto,width:auto"></a>
     </div>
-    <div>
-        Żródło: <p><a href="{{ recipe.source }}"> {{ recipe.source }}</a></p>
+    <div class="source">
+            Żródło: <p><a href="{{ recipe.source }}"> {{ recipe.source }}</a></p>
     </div>
-    <div>
+    <div class="author">
         Dodano przez: {{recipe.author}}
     </div>
+</div>
+</section>
 {% endfor %}
 {% endblock %}

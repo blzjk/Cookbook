@@ -1,15 +1,13 @@
 {% extends 'menu.html' %}
 {% block title %}Kategorie{% endblock %}
 
-
 {% block content %}
-
-    <h3>
 {% for cat in categories %}
-<div class="category">
-<p><a href= "/kategoria/{{ cat.id }}/"> {{cat.name}}</a></p>
-{% endfor %}
 
-</h3>
+<div class="category">
+    <h3>
+        <p><a href= "/kategoria/{{ cat.id }}/"> {{cat.name}}</a></p>
+    </h3>
 </div>
+{% endfor %}
 {% endblock %}l>

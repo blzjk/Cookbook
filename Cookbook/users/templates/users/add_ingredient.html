@@ -7,15 +7,15 @@
 {% endblock %}
 
 {% block content %}
-<body>
-{% for ingredient in ingredients %}
-{{ ingredient.name }}
-{% endfor %}
-    <form method="post" action="" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Dodaj">
-    </form>
-<a href="{% url 'przepis' %}">Wróć do dodawania przepisu.</a>
-</body>
+<div class="recipe">
+    {% for ingredient in ingredients %}
+    {{ ingredient.name }}
+    {% endfor %}
+        <form method="post" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Dodaj">
+        </form>
+    <a href="{% url 'przepis' %}">Wróć do dodawania przepisu.</a>
+</div>
 {% endblock %}l>

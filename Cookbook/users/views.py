@@ -55,7 +55,7 @@ def add_recipe(request):
 def user_login(request):
     # odebranie formularza
     if request.method == 'POST':
-        messages.success(request, 'Zostałeś poprawnie zalogowany.')
+        # messages.success(request, 'Zostałeś poprawnie zalogowany.')
         form = AuthenticationForm(request, data=request.POST)
 
         if form.is_valid():
@@ -67,7 +67,7 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return redirect("/")
+                    return redirect("/panel")
                 else:
                     return HttpResponse('Konto jest zablokowane')
             else:

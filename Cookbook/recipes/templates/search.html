@@ -3,26 +3,28 @@
 
 
 {% block content %}
+<section>
+<h2 id ="textsearch">Znajdź swój ulubiony przepis</h2>
 
-<h2 id = "textsearch">Wyszukiwarka</h2>
-<body>
 <form method = GET action="{% url 'szukaj' %}" id = "search">
     {% csrf_token %}
 
     <input type="text" name="searched"/>
-    <button type="submit" class="btn">Wyszukaj
-    </button>
+    <br></br>
+    <button type="submit" class="btn">Wyszukaj</button>
 </form>
 
 {{ searched }}
 {% for recipe in recipes %}
- <span class="recipeDetails">
+ <div class="recipe">
+    <div class="recipeTitle">
             <p><a href="/przepis/{{recipe.id}}"> {{recipe.title}}</a></p>
-        </span>
-        <span class="recipeContent">
-            {{ recipe.content|safe }}
-        </span>
-{% endfor %}
-</body>
+    </div>
 
+    <div class="recipePhoto">
+        <a href="/przepis/{{recipe.id}}/"><img src = '/{{recipe.photo}}'/></a>
+    </div>
+</div>
+{% endfor %}
+</section>
 {% endblock %}

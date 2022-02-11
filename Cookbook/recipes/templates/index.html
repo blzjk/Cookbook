@@ -1,28 +1,39 @@
 {% extends 'menu.html' %}
 {% block title %}Strona główna{% endblock %}
 
+{% block header %}
+    
+{% endblock %}
 
 
 {% block content %}
-<div class = "index">
-    {% for recipe in recipes %}
-    <div class="box">
-        <span class="recipeHeader">
-            {{recipe.kategory}}
-        </span>
-        <span class="recipeDetails">
-            <p><a href="/przepis/{{recipe.id}}/"> {{recipe.title}}</a></p>
-        </span>
-        <span class="recipeURL">
-         <a href="/przepis/{{recipe.id}}/"><img src = '/{{recipe.photo}}' style="max-height:150px;max-width:300px;height:auto,width:auto; border-radius: 10px"/></a>
-        </span>
+<section>
+    <div class = "index">
+        {% for recipe in recipes %}
+        <div class="box">
+            <span class="recipeTitle">
+                <p><a href="/przepis/{{recipe.id}}/"> {{recipe.title}}</a></p>
+            </span>
+            <span class="recipePhoto">
+            <a href="/przepis/{{recipe.id}}/"><img src = '/{{recipe.photo}}'/></a>
+            </span>
+        </div>
+        {% endfor %}
+        <div class="pageNumber">
+        {% for page in pagecount %}
+            <span><a href="{% url 'strona' page|add:'1'%}">{{ page|add:'1' }}</a></span>
+        {% endfor %}
+        </div>
     </div>
-    {% endfor %}
-    <div class="pageNumber">
-    {% for page in pagecount %}
-        <span><a href="{% url 'strona' page|add:'1'%}">{{ page|add:'1' }}</a></span>
-    {% endfor %}
+</section>
+<section>
+    <div id="category">  
+        {% for cat in categories %}
+            <h3>
+                <p><a href= "/kategoria/{{ cat.id }}/"> {{cat.name}}</a></p>
+            </h3>       
+        {% endfor %}
     </div>
-</div>
+</section>        
 {% endblock %}
 

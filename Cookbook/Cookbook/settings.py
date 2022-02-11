@@ -152,7 +152,7 @@ MEDIA_URL = '//'
 
 # Static files (CSS, JavaScript, Images)
 
-STATIC_URL = 'recipes/Static/'
+STATIC_URL = 'recipes/static/'
 
 
 

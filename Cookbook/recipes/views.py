@@ -24,9 +24,12 @@ def index2(request, page):
     #pobranie ilości wszystkich przepisów aby obliczyć ilość stron potrzebnych do wyświetlenia 3 przepisów na stronie
     count = Recipes.objects.all().count()
     pagecount = math.ceil(count/3)
+    #wyświetlanie wszystkich kategorii
+    categories = Categories.objects.all()
     dane = {
         'recipes': recipes,
         'pagecount': range(pagecount),
+        'categories': categories,
     }
     return render(request, 'index.html', dane)
 
@@ -77,7 +80,7 @@ def search(request):
         searched = request.GET['searched']
     else:
         searched = False
-    allRecipes = Recipes.objects.filter(content__icontains=searched)
+    allRecipes = Recipes.objects.filter(title__icontains=searched)
     dane = {'recipes': allRecipes}
     return render(request, 'search.html', dane)
 

@@ -1,57 +1,55 @@
 {% extends 'menu.html' %}
-
+{% block title %}Sprawdzone przepisy{% endblock %}
 {% load social_share %}
 
 
 
 {% block content %}
 
+<div class="recipe">
+    <div class="recipeTitle">
+        {{recipe.title}}
+    </div>
 
-    <main>
-    <p>
-        <div class="recipeHeader">
-       {{recipe.title}}
-        </div>
     <div class="recipeContent">
-        {{recipe.content}}
+            {{recipe.content}}
     </div>
-    <div>
-         {{recipe.date}}
+
+    <div class="recipePhoto">
+            <img src = '/{{recipe.photo}}'/>
     </div>
-    <div>
-         <img src = '/{{recipe.photo}}' style="max-height:540px;max-width:540px;height:auto,width:auto"/>
+        
+    <div class="source">
+            Żródło:
+            <p><a href="{{ recipe.source }}" target="_blank"> {{ recipe.source }}</a></p>
     </div>
-    <div>
-        Żródło:
-        <p><a href="{{ recipe.source }}"> {{ recipe.source }}</a></p>
+            
+    <div class="rating">
+                Ocena: {{ rating.avg }}/{{ rating.count }}
     </div>
-        <div class="rating">
-            Ocena: {{ rating.avg }}/{{ rating.count }}
-        </div>
-        <div class="rateRecipe">
-            {% if user.is_authenticated %}
-            Oceń:
-            {%for rate in ratingRange%}
+            
+    <div class="rateRecipe">
+                {% if user.is_authenticated %}
+                Oceń:
+                {%for rate in ratingRange%}
 
-            <form method="POST" action="{% url 'ocena' %}">
-                {%csrf_token%}
-                <input name="rate" type="hidden" value={{rate|add:"1"}}>
-                <input name="recipeId" type="hidden" value={{recipe.id}}>
-                <input type="submit" value={{rate|add:"1"}}>
-            </form>
-            {% endfor %}
-            {% endif %}
-        </div>
-
-
-
+                <form method="POST" action="{% url 'ocena' %}">
+                    {%csrf_token%}
+                    <input name="rate" type="hidden" value={{rate|add:"1"}}>
+                    <input name="recipeId" type="hidden" value={{recipe.id}}>
+                    <input type="submit" value={{rate|add:"1"}}>
+                </form>
+                {% endfor %}
+                {% endif %}
+    </div>
 
 {% post_to_facebook object_or_url "Opublikuj na Facebooku!" %}
 {% post_to_twitter "Super przepis: {{object.title}}. Sprawdź to!" object_or_url "Opublikuj na Twitterze" %}
 {% send_email object.title "Super przepis: {{object.title}}. Sprawdź to!" object_or_url "Udostępnij przez e-mail" %}
-    </p>
-
-</main>
+        <div class="date">
+                Data dodania: {{recipe.date}}
+        </div>
+</div>
 {% endblock %}
 
 
